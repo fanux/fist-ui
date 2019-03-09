@@ -1,0 +1,39 @@
+kind: pipeline
+name: default
+
+workspace:
+   base: /go
+   path: src/github.com/fanux/fist-ui
+
+steps:
+- name: build-font
+  image: fanux/vue:latest
+  commands:
+#    - npm install vue --save
+#    - npm install vue-router --save
+#    - npm install iview --save 
+#    - npm install vue-resource  --save 
+#    - npm install vue-router --save 
+#    - npm install vue-cookies --save
+#    - npm install vue-template-compiler -D
+#    - npm i --save gitalk
+     - npm run build
+
+- name: publish-font
+  image: plugins/docker
+  settings:
+    repo: fanux/fist-font
+    tags: ${DRONE_TAG=latest}
+    username: fanux
+    dockerfile: Dockerfile
+    password:
+      from_secret: docker-hub-pass
+
+#- name: deploy-font
+#  image: lachlanevenson/k8s-kubectl
+#  commands:
+#    - mkdir ~/.kube
+#    - cp deploy/config ~/.kube/config
+#    - kubectl delete -f deploy/store-font.yaml || true
+#    - sleep 15
+#    - kubectl create -f deploy/store-font.yaml || true
