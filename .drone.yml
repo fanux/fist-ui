@@ -11,9 +11,9 @@ steps:
   commands:
 #    - npm install vue --save
 #    - npm install vue-router --save
-#    - npm install iview --save 
-#    - npm install vue-resource  --save 
-#    - npm install vue-router --save 
+#    - npm install iview --save
+#    - npm install vue-resource  --save
+#    - npm install vue-router --save
 #    - npm install vue-cookies --save
 #    - npm install vue-template-compiler -D
 #    - npm i --save gitalk
@@ -25,17 +25,17 @@ steps:
   settings:
     repo: lameleg/fist-ui
     tags: ${DRONE_TAG=latest}
-    username: 
+    username:
       from_secret: docker-hub-user
     dockerfile: Dockerfile
     password:
       from_secret: docker-hub-pass
 
-#- name: deploy-font
-#  image: lachlanevenson/k8s-kubectl
-#  commands:
-#    - mkdir ~/.kube
-#    - cp deploy/config ~/.kube/config
-#    - kubectl delete -f deploy/store-font.yaml || true
-#    - sleep 15
-#    - kubectl create -f deploy/store-font.yaml || true
+- name: deploy-font
+  image: lachlanevenson/k8s-kubectl
+  commands:
+    - mkdir ~/.kube
+    - cp deploy/config ~/.kube/config
+    - kubectl delete -f deploy/deploy.yaml || true
+    - sleep 15
+    - kubectl create -f deploy/deploy.yaml || true
