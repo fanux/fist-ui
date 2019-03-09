@@ -18,23 +18,24 @@ spec:
           - containerPort: 80
           - containerPort: 443
       restartPolicy: Always
+      hostNetwork: true
   selector:
     matchLabels:
       name: fist-ui
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: fist-ui
-  namespace: sealyun
-spec:
-  selector:
-    name: fist-ui
-  ports:
-  - name: http
-    protocol: TCP
-    targetPort:  80
-    port: 80
-    nodePort: 32000
-  type: NodePort
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: fist-ui
+#  namespace: sealyun
+#spec:
+#  selector:
+#    name: fist-ui
+#  ports:
+#  - name: http
+#    protocol: TCP
+#    targetPort:  80
+#    port: 80
+#    nodePort: 32000
+#  type: NodePort
