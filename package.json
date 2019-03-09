@@ -1,7 +1,7 @@
 {
   "name": "fist-ui",
   "version": "1.0.0",
-  "description": "fist ui project",
+  "description": "fist ui project for fist",
   "author": "cuisongliu <cuisongliu@qq.com>",
   "private": true,
   "scripts": {
