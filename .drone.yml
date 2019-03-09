@@ -17,14 +17,16 @@ steps:
 #    - npm install vue-cookies --save
 #    - npm install vue-template-compiler -D
 #    - npm i --save gitalk
+     - npm install
      - npm run build
 
 - name: publish-font
   image: plugins/docker
   settings:
-    repo: fanux/fist-font
+    repo: lameleg/fist-ui
     tags: ${DRONE_TAG=latest}
-    username: fanux
+    username: 
+      from_secret: docker-hub-user
     dockerfile: Dockerfile
     password:
       from_secret: docker-hub-pass
