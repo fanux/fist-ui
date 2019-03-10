@@ -9,14 +9,6 @@ steps:
 - name: build-font
   image: fanux/vue:latest
   commands:
-#    - npm install vue --save
-#    - npm install vue-router --save
-#    - npm install iview --save
-#    - npm install vue-resource  --save
-#    - npm install vue-router --save
-#    - npm install vue-cookies --save
-#    - npm install vue-template-compiler -D
-#    - npm i --save gitalk
      - npm install
      - npm run build
 
@@ -27,7 +19,7 @@ steps:
     tags: ${DRONE_TAG=latest}
     username:
       from_secret: docker-hub-user
-    dockerfile: Dockerfile
+    dockerfile: docker/Dockerfile
     password:
       from_secret: docker-hub-pass
 
