@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fist-ui
+  namespace: sealyun
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: fist-ui
+    spec:
+      containers:
+      - name: fist-ui
+        image: lameleg/fist-ui:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+          - containerPort: 443
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      name: fist-ui
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fist-ui
+  namespace: sealyun
+spec:
+  selector:
+    name: fist-ui
+  ports:
+  - name: http
+    protocol: TCP
+    targetPort:  80
+    port: 80
+    nodePort: 32200
+  type: NodePort
