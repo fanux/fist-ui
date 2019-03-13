@@ -2,7 +2,7 @@
 html,body {
 	width: 100%;
 	height: 100%;
-	background-color: #000;
+	/*background-color: #000;*/
 }
 .login {
 	width: 100%;
@@ -60,17 +60,17 @@ export default {
   data () {
     return {
       loginData: {
-      	acct:'',
-      	pass:''
+      	acct: '',
+      	pass: ''
       },
       ruleValidate: {
       	acct: [
-            { required: true, message: '账号不能为空', trigger: 'blur' },
-            { min: 3, max: 16, message: '账号长度3-16个字符', trigger: 'blur' }
+          { required: true, message: '账号不能为空', trigger: 'blur' },
+          { min: 3, max: 16, message: '账号长度3-16个字符', trigger: 'blur' }
         ],
         pass: [
-            { required: true, message: '密码不能为空', trigger: 'blur' },
-            { type: 'string', min: 6, max: 16, message: '密码长度6-16个字符', trigger: 'blur' }
+          { required: true, message: '密码不能为空', trigger: 'blur' },
+          { type: 'string', min: 6, max: 16, message: '密码长度6-16个字符', trigger: 'blur' }
         ]
       }
     }
@@ -86,7 +86,7 @@ export default {
       })
     },
     handleReset (name) {
-        this.$refs[name].resetFields();
+      this.$refs[name].resetFields()
     }
   }
 }

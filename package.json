@@ -1,7 +1,7 @@
 {
-  "name": "vue-iview-master",
+  "name": "fist-ui",
   "version": "1.0.0",
-  "description": "vue iview project",
+  "description": "fist-ui",
   "author": "caoyan",
   "private": true,
   "scripts": {
@@ -11,7 +11,8 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "production": "webpack-dev-server --inline --progress --config build/webpack.prod.conf.js"
   },
   "dependencies": {
     "iview": "^2.14.3",
