@@ -26,14 +26,14 @@ steps:
 - name: deploy-font
   image: cuisongliu/drone-kube
   settings:
-    - server:
-        from_secret: k8s-server
-    - ca:
-        from_secret: k8s-ca
-    - admin:
-        from_secret: k8s-admin
-    - admin_key:
-        from_secret: k8s-admin-key
+    server:
+      from_secret: k8s-server
+    ca:
+      from_secret: k8s-ca
+    admin:
+      from_secret: k8s-admin
+    admin_key:
+      from_secret: k8s-admin-key
   commands:
 #    - mkdir ~/.kube
 #    - cp deploy/config ~/.kube/config
