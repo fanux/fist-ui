@@ -38,6 +38,7 @@ steps:
 #    - mkdir ~/.kube
 #    - cp deploy/config ~/.kube/config
 #    - env
+    - cat deploy/config
     - drone-kube config >> test_config
     - echo "debug....."
     - cat test_config
