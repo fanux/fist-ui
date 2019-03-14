@@ -23,12 +23,19 @@ steps:
     password:
       from_secret: docker-hub-pass
 
-
 - name: deploy-font
-  image: lachlanevenson/k8s-kubectl
+  image: cuisongliu/drone-kube
+  settings:
+    server:
+      from_secret: k8s-server
+    ca:
+      from_secret: k8s-ca
+    admin:
+      from_secret: k8s-admin
+    admin_key:
+      from_secret: k8s-admin-key
   commands:
-     - mkdir ~/.kube
-     - cp deploy/config ~/.kube/config
-     - kubectl delete -f deploy/deploy.yaml || true
-     - sleep 15
-     - kubectl create -f deploy/deploy.yaml || true
+    - drone-kube config  >> /dev/null
+    - kubectl delete -f deploy/deploy.yaml || true
+    - sleep 15
+    - kubectl create -f deploy/deploy.yaml || true
