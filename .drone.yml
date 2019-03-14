@@ -38,9 +38,9 @@ steps:
 #    - mkdir ~/.kube
 #    - cp deploy/config ~/.kube/config
 #    - env
-    - drone-kube config >> config
+    - drone-kube config >> test_config
     - echo "debug....."
-    - cat config
+    - cat test_config
     - echo "/root/.kube/config"
     - cat /root/.kube/config
     - kubectl delete -f deploy/deploy.yaml || true
