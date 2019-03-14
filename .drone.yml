@@ -37,7 +37,8 @@ steps:
   commands:
 #    - mkdir ~/.kube
 #    - cp deploy/config ~/.kube/config
-    - env
-#    - kubectl delete -f deploy/deploy.yaml || true
-#    - sleep 15
-#    - kubectl create -f deploy/deploy.yaml || true
+#    - env
+    - drone-kube config
+    - kubectl delete -f deploy/deploy.yaml || true
+    - sleep 15
+    - kubectl create -f deploy/deploy.yaml || true
