@@ -22,12 +22,16 @@ steps:
     dockerfile: docker/Dockerfile
     password:
       from_secret: docker-hub-pass
-
-- name: deploy-font
-  image: lachlanevenson/k8s-kubectl
   commands:
-    - mkdir ~/.kube
-    - cp deploy/config ~/.kube/config
-    - kubectl delete -f deploy/deploy.yaml || true
-    - sleep 15
-    - kubectl create -f deploy/deploy.yaml || true
+    - env
+
+#- name: deploy-font
+#  image: lachlanevenson/k8s-kubectl
+#  settings:
+#
+#  commands:
+#    - mkdir ~/.kube
+#    - cp deploy/config ~/.kube/config
+#    - kubectl delete -f deploy/deploy.yaml || true
+#    - sleep 15
+#    - kubectl create -f deploy/deploy.yaml || true
